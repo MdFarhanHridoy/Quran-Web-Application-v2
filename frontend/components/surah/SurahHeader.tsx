@@ -53,7 +53,7 @@ export default function SurahHeader({
         </h2>
         <div className="flex items-center justify-center gap-3">
           <span className="px-3 py-1 bg-[#1a1a2e] rounded-full text-sm text-[#a0a0a0] border border-[#2a3a5e]">
-            {isMakkah ? '🕋 Makkah' : '🕌 Madinah'}
+            {isMakkah ? 'Makkah' : 'Madinah'}
           </span>
           <span className="px-3 py-1 bg-[#1a1a2e] rounded-full text-sm text-[#a0a0a0] border border-[#2a3a5e]">
             {ayahCount} Ayahs

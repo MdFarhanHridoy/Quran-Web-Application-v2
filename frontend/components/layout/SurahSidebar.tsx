@@ -26,10 +26,6 @@ export default function SurahSidebar({ surahs, currentSurahId, onSurahSelect, on
     );
   }, [surahs, filter]);
 
-  const getRevelationIcon = (place: string) => {
-    return place === 'Meccan' || place === 'Makkah' ? '🕋' : '🕌';
-  };
-
   return (
     <>
       {isMobileDrawer && (
@@ -74,9 +70,6 @@ export default function SurahSidebar({ surahs, currentSurahId, onSurahSelect, on
                     </div>
                   </div>
                 </div>
-                <span className="text-xs text-[#707070] ml-2">
-                  {getRevelationIcon(surah.revelation_place)}
-                </span>
               </div>
               <div className="mt-1 text-right" style={{ fontFamily: "'KFGQPC HAFS Uthmanic Script', 'KFGQ', serif" }}>
                 <span className="text-lg text-[#c9a84c]">{surah.name_ar}</span>
