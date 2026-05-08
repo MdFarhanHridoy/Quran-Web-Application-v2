@@ -14,7 +14,10 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<Settings>(() => {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem('quran-settings');
-      return stored ? JSON.parse(stored) : defaultSettings;
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        return { ...defaultSettings, ...parsed };
+      }
     }
     return defaultSettings;
   });

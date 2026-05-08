@@ -1,11 +1,11 @@
 export interface Settings {
-  arabicFont: 'Amiri' | 'Scheherazade';
+  arabicFont: 'KFGQ' | 'Amiri' | 'Scheherazade';
   arabicFontSize: number;
   translationFontSize: number;
 }
 
 export const defaultSettings: Settings = {
-  arabicFont: 'Amiri',
-  arabicFontSize: 24,
-  translationFontSize: 16,
+  arabicFont: 'KFGQ',
+  arabicFontSize: 30,
+  translationFontSize: 17,
 };
