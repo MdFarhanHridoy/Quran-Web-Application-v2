@@ -40,7 +40,7 @@ export default function SurahSidebar({ surahs, currentSurahId, onSurahSelect, on
         <div className="p-4 border-b border-[#212121]">
           <input
             type="text"
-            placeholder="Filter surahs..."
+            placeholder="Search Surahs..."
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
             className="w-full px-3 py-2 bg-[#0d0d0d] border border-[#212121] rounded-lg text-[#c4c4c4] placeholder-[#636663] focus:outline-none focus:ring-2 focus:ring-[#408039] text-sm"
