@@ -24,7 +24,7 @@ export default function AudioPlayer({ surahId, ayahNumber }: AudioPlayerProps) {
   return (
     <button
       onClick={handleClick}
-      className="flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 hover:bg-[#2a3a5e] text-[#a0a0a0] hover:text-[#c9a84c]"
+      className="flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200 hover:bg-[#212121] text-[#7b7d7b] hover:text-[#408039]"
       aria-label={isThisPlaying ? 'Pause audio' : 'Play audio'}
     >
       {isThisPlaying ? (

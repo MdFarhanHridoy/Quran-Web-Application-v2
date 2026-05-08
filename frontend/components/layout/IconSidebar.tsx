@@ -42,12 +42,12 @@ export default function IconSidebar({ onSurahClick, onSearchClick, onSettingsCli
   ];
 
   return (
-    <div className="fixed left-0 top-0 h-full w-14 md:w-16 bg-[#16213e] border-r border-[#2a3a5e] flex flex-col items-center py-4 z-40">
+    <div className="fixed left-0 top-0 h-full w-14 md:w-16 bg-[#171717] border-r border-[#212121] flex flex-col items-center py-4 z-40">
       {icons.map((item) => (
         <button
           key={item.id}
           onClick={item.onClick}
-          className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-lg text-[#a0a0a0] hover:bg-[#253354] hover:text-[#c9a84c] transition-all duration-200 mb-2"
+          className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-lg text-[#7b7d7b] hover:bg-[#1c1c1c] hover:text-[#408039] transition-all duration-200 mb-2"
           title={item.label}
           aria-label={item.label}
         >

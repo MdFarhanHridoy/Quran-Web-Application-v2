@@ -11,17 +11,17 @@
 }
 
 :root {
-  --bg-primary: #1a1a2e;
-  --bg-secondary: #16213e;
-  --bg-card: #1e2a47;
-  --bg-hover: #253354;
-  --bg-active: #2a3a5e;
-  --text-primary: #e0e0e0;
-  --text-secondary: #a0a0a0;
-  --text-muted: #707070;
-  --accent: #c9a84c;
-  --accent-hover: #d4b85c;
-  --border: #2a3a5e;
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #171717;
+  --bg-card: #121212;
+  --bg-hover: #1c1c1c;
+  --bg-active: #212121;
+  --text-primary: #c4c4c4;
+  --text-secondary: #7b7d7b;
+  --text-muted: #636663;
+  --accent: #408039;
+  --accent-hover: #4d9946;
+  --border: #212121;
   --font-amiri: 'Amiri', serif;
   --font-scheherazade: 'Scheherazade New', serif;
   --font-kfgq: 'KFGQPC HAFS Uthmanic Script', serif;

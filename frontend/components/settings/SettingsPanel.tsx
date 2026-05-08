@@ -26,12 +26,12 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
         className="fixed inset-0 bg-black/50 z-50"
         onClick={onClose}
       />
-      <div className="fixed right-0 top-0 h-full w-80 bg-[#16213e] border-l border-[#2a3a5e] z-50 flex flex-col transform transition-transform duration-300">
-        <div className="p-6 border-b border-[#2a3a5e] flex items-center justify-between">
-          <h2 className="text-xl font-bold text-[#e0e0e0]">Font Settings</h2>
+      <div className="fixed right-0 top-0 h-full w-80 bg-[#171717] border-l border-[#212121] z-50 flex flex-col transform transition-transform duration-300">
+        <div className="p-6 border-b border-[#212121] flex items-center justify-between">
+          <h2 className="text-xl font-bold text-[#c4c4c4]">Font Settings</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-[#253354] rounded-lg transition-colors text-[#a0a0a0] hover:text-[#e0e0e0]"
+            className="p-2 hover:bg-[#1c1c1c] rounded-lg transition-colors text-[#7b7d7b] hover:text-[#c4c4c4]"
             aria-label="Close settings"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,17 +42,17 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
 
         <div className="flex-1 overflow-y-auto p-6 space-y-8">
           <div>
-            <label className="block text-sm font-semibold text-[#e0e0e0] mb-4">
-              Arabic Font Face
-            </label>
+          <label className="block text-sm font-semibold text-[#c4c4c4] mb-4">
+            Arabic Font Face
+          </label>
             <div className="space-y-3">
               {fonts.map((font) => (
                 <label
                   key={font.id}
                   className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all duration-200 ${
                     settings.arabicFont === font.id
-                      ? 'bg-[#253354] border-[#c9a84c]'
-                      : 'bg-[#1a1a2e] border-[#2a3a5e] hover:border-[#253354]'
+                      ? 'bg-[#1c1c1c] border-[#408039]'
+                      : 'bg-[#0d0d0d] border-[#212121] hover:border-[#1c1c1c]'
                   }`}
                 >
                   <input
@@ -61,12 +61,12 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
                     value={font.id}
                     checked={settings.arabicFont === font.id}
                     onChange={() => updateSettings({ arabicFont: font.id })}
-                    className="w-4 h-4 accent-[#c9a84c]"
+                    className="w-4 h-4 accent-[#408039]"
                   />
                   <div className="flex-1">
-                    <div className="text-[#e0e0e0] font-medium text-sm">{font.name}</div>
+                    <div className="text-[#c4c4c4] font-medium text-sm">{font.name}</div>
                     <div
-                      className="text-[#c9a84c] mt-1 text-lg"
+                      className="text-[#408039] mt-1 text-lg"
                       dir="rtl"
                       style={{ fontFamily: getArabicFontFamily(font.id) }}
                     >
@@ -79,7 +79,7 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-[#e0e0e0] mb-4">
+            <label className="block text-sm font-semibold text-[#c4c4c4] mb-4">
               Arabic Font Size: {settings.arabicFontSize}px
             </label>
             <input
@@ -88,16 +88,16 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
               max="50"
               value={settings.arabicFontSize}
               onChange={(e) => updateSettings({ arabicFontSize: parseInt(e.target.value) })}
-              className="w-full h-2 bg-[#1a1a2e] rounded-lg appearance-none cursor-pointer accent-[#c9a84c]"
+              className="w-full h-2 bg-[#0d0d0d] rounded-lg appearance-none cursor-pointer accent-[#408039]"
             />
-            <div className="flex justify-between text-xs text-[#707070] mt-2">
+            <div className="flex justify-between text-xs text-[#636663] mt-2">
               <span>20px</span>
               <span>50px</span>
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-[#e0e0e0] mb-4">
+            <label className="block text-sm font-semibold text-[#c4c4c4] mb-4">
               Translation Font Size: {settings.translationFontSize}px
             </label>
             <input
@@ -106,18 +106,18 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
               max="24"
               value={settings.translationFontSize}
               onChange={(e) => updateSettings({ translationFontSize: parseInt(e.target.value) })}
-              className="w-full h-2 bg-[#1a1a2e] rounded-lg appearance-none cursor-pointer accent-[#c9a84c]"
+              className="w-full h-2 bg-[#0d0d0d] rounded-lg appearance-none cursor-pointer accent-[#408039]"
             />
-            <div className="flex justify-between text-xs text-[#707070] mt-2">
+            <div className="flex justify-between text-xs text-[#636663] mt-2">
               <span>12px</span>
               <span>24px</span>
             </div>
           </div>
 
-          <div className="bg-[#1a1a2e] p-4 rounded-lg border border-[#2a3a5e]">
-            <h3 className="font-semibold text-[#e0e0e0] mb-3 text-sm">Preview</h3>
+          <div className="bg-[#0d0d0d] p-4 rounded-lg border border-[#212121]">
+            <h3 className="font-semibold text-[#c4c4c4] mb-3 text-sm">Preview</h3>
             <div
-              className="text-right text-[#e0e0e0] mb-3 leading-loose"
+              className="text-right text-[#c4c4c4] mb-3 leading-loose"
               dir="rtl"
               style={{
                 fontFamily: getArabicFontFamily(settings.arabicFont),
@@ -127,7 +127,7 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
               بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
             </div>
             <div
-              className="text-[#a0a0a0] leading-relaxed"
+              className="text-[#7b7d7b] leading-relaxed"
               style={{ fontSize: `${settings.translationFontSize}px` }}
             >
               In the name of Allah, the Most Gracious, the Most Merciful.
@@ -135,8 +135,8 @@ export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
           </div>
         </div>
 
-        <div className="p-4 border-t border-[#2a3a5e] text-center">
-          <p className="text-xs text-[#707070]">
+        <div className="p-4 border-t border-[#212121] text-center">
+          <p className="text-xs text-[#636663]">
             Settings are automatically saved to your browser.
           </p>
         </div>

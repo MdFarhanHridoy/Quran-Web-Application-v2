@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <div className="text-[#e0e0e0] text-xl">Loading...</div>
+      <div className="text-[#c4c4c4] text-xl">Loading...</div>
     </div>
   );
 }

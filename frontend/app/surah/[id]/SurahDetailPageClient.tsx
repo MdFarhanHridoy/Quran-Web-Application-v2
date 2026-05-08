@@ -36,7 +36,7 @@ export default function SurahDetailPageClient({ surah, ayahs }: SurahDetailPageC
   if (!surah) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="text-[#e0e0e0] text-xl">Surah not found</div>
+        <div className="text-[#c4c4c4] text-xl">Surah not found</div>
       </div>
     );
   }
