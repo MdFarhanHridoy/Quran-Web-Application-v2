@@ -45,7 +45,6 @@ export default function SurahDetailPageClient({ surah, ayahs }: SurahDetailPageC
     <div className="min-h-full pb-20">
       <div className="max-w-4xl mx-auto px-4 py-6">
         <SurahHeader
-          nameAr={surah.name_ar}
           nameEn={surah.name_en}
           ayahCount={surah.verse_count}
           revelationPlace={surah.revelation_place}
