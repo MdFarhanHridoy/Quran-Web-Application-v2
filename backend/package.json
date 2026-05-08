@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Quran Web Application Backend",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hono/node-server": "^1.19.14",
+    "better-sqlite3": "^12.9.0",
+    "dotenv": "^17.4.2",
+    "hono": "^4.12.14"
+  }
+}
