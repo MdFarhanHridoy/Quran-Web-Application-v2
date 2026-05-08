@@ -24,6 +24,7 @@ export default function SurahHeader({
             src={isMakkah ? '/asset/makkah.webp' : '/asset/madinah.webp'}
             alt={isMakkah ? 'Makkah' : 'Madinah'}
             className="w-16 h-16 rounded-lg object-cover"
+            style={{ filter: 'brightness(1.2)' }}
           />
         </div>
 
