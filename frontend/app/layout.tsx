@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SettingsProvider } from "@/context/SettingsContext";
+import { AudioProvider } from "@/context/AudioContext";
 import LayoutWrapper from "@/components/layout/LayoutWrapper";
 
 export const metadata: Metadata = {
@@ -22,9 +23,11 @@ export default function RootLayout({
       </head>
       <body className="min-h-full">
         <SettingsProvider>
-          <LayoutWrapper>
-            {children}
-          </LayoutWrapper>
+          <AudioProvider>
+            <LayoutWrapper>
+              {children}
+            </LayoutWrapper>
+          </AudioProvider>
         </SettingsProvider>
       </body>
     </html>
