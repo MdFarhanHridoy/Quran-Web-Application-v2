@@ -14,6 +14,7 @@ export interface Ayah {
   verse_key: string;
   text_uthmani: string;
   translation: string;
+  surah_name?: string;
 }
 
 export interface SearchResponse {

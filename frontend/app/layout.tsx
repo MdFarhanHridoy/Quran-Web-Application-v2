@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SettingsProvider } from "@/context/SettingsContext";
-import SettingsSidebarWrapper from "@/components/SettingsSidebarWrapper";
+import LayoutWrapper from "@/components/layout/LayoutWrapper";
 
 export const metadata: Metadata = {
   title: "Quran Web Application",
@@ -20,12 +20,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400&display=swap" rel="stylesheet" />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full">
         <SettingsProvider>
-          <SettingsSidebarWrapper />
-          <main className="flex-1">
+          <LayoutWrapper>
             {children}
-          </main>
+          </LayoutWrapper>
         </SettingsProvider>
       </body>
     </html>
