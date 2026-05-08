@@ -14,7 +14,7 @@ export default function SurahHeader({
   surahId,
 }: SurahHeaderProps) {
   const isMakkah = revelationPlace === 'Meccan' || revelationPlace === 'Makkah';
-  const showBismillah = surahId !== 9;
+  const showBismillah = surahId !== 1 && surahId !== 9;
 
   return (
     <div className="bg-[#171717] rounded-lg p-6 mb-6 border border-[#212121]">
@@ -45,6 +45,7 @@ export default function SurahHeader({
               width={220}
               height={45}
               className="opacity-50"
+              style={{ filter: 'brightness(0) invert(1)' }}
             />
           </div>
         )}
