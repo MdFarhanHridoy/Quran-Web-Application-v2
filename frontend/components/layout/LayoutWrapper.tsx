@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import IconSidebar from './IconSidebar';
 import SurahSidebar from './SurahSidebar';
 import { getSurahs } from '@/lib/api';

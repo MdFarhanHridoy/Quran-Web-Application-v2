@@ -1,7 +1,6 @@
 'use client';
 
 import { useAudio } from '@/context/AudioContext';
-import { useState } from 'react';
 
 interface AudioPlayerProps {
   surahId: number;
