@@ -55,7 +55,7 @@ function LayoutWrapperContent({ children }: LayoutWrapperProps) {
         onClose={() => setIsSurahSidebarOpen(false)}
       />
 
-      <main className="flex-1 overflow-y-auto ml-14 md:ml-16">
+      <main className="flex-1 overflow-y-auto ml-14 md:ml-16 bg-[#121212]">
         {children}
       </main>
     </div>

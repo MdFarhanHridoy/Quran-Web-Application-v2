@@ -45,19 +45,30 @@ html, body, #root {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 0.3rem;
+  height: 0;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
+  background-color: hsl(112 39% 36% / 0.2);
+  border-radius: 9999rem;
+  min-height: 2.75rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--bg-hover);
+  background-color: hsl(112 39% 36% / 0.9);
+}
+
+body::-webkit-scrollbar {
+  width: 0.45rem;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: hsl(112 39% 36%);
+  border-radius: 9999rem;
+  min-height: 2.75rem;
 }
