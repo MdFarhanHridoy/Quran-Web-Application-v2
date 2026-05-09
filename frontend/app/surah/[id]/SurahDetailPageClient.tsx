@@ -42,7 +42,7 @@ export default function SurahDetailPageClient({ surah, ayahs }: SurahDetailPageC
   }
 
   return (
-    <div className="min-h-full pb-20">
+    <div className="min-h-full">
       <div className="mx-auto px-4 py-6">
         <SurahHeader
           nameEn={surah.name_en}

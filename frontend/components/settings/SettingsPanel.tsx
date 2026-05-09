@@ -43,7 +43,7 @@ export default function SettingsPanel({ isMobileOpen = false, onClose }: Setting
           >
             <h2 className="text-lg font-bold">Font Settings</h2>
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 15 14" fill="none" className={`size-4 shrink-0 transition-all duration-300 ease-in-out ${isFontSettingsOpen ? 'rotate-180' : ''}`}>
-              <path d="M11.8181 5.22095L8.01479 9.02428C7.56562 9.47345 6.83063 9.47345 6.38146 9.02428L2.57812 5.22095" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M11.8181 5.22095L8.01479 9.02428C7.56562 9.47345 6.83063 9.47345 6.38146 9.02428L2.57812 5.22095" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"></path>
             </svg>
           </button>
           <button
