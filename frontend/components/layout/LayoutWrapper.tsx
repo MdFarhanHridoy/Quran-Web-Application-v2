@@ -46,27 +46,19 @@ function LayoutWrapperContent({ children }: LayoutWrapperProps) {
 
   const currentSurahId = getCurrentSurahId();
 
-  const handleSearchClick = () => {
-    setIsSearchOpen(true);
-  };
-
   const handleSearchSubmit = (query: string) => {
     setIsSearchOpen(false);
     router.push(`/search?q=${encodeURIComponent(query)}`);
   };
 
-  const handleSettingsClick = () => {
-    setIsSettingsOpen(!isSettingsOpen);
-  };
-
   return (
     <>
-      <Header onSearchClick={handleSearchClick} />
+      <Header onSearchClick={() => setIsSearchOpen(true)} />
 
       <div className="flex h-screen pt-14 overflow-hidden">
         <IconSidebar
           onSurahClick={() => setIsSurahSidebarOpen(!isSurahSidebarOpen)}
-          onSettingsClick={handleSettingsClick}
+          onSettingsClick={() => setIsSettingsOpen(!isSettingsOpen)}
         />
 
         <SurahSidebar
@@ -77,7 +69,7 @@ function LayoutWrapperContent({ children }: LayoutWrapperProps) {
           isMobileOpen={isSurahSidebarOpen}
         />
 
-        <main className="flex-1 overflow-y-auto ml-14 md:ml-[22rem] bg-[#121212]">
+        <main className="flex-1 overflow-y-auto ml-14 md:ml-[22rem] lg:mr-80 bg-[#121212]">
           {children}
         </main>
 
@@ -85,13 +77,13 @@ function LayoutWrapperContent({ children }: LayoutWrapperProps) {
           isMobileOpen={isSettingsOpen}
           onClose={() => setIsSettingsOpen(false)}
         />
-
-        <SearchPanel
-          isOpen={isSearchOpen}
-          onClose={() => setIsSearchOpen(false)}
-          onSearch={handleSearchSubmit}
-        />
       </div>
+
+      <SearchPanel
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        onSearch={handleSearchSubmit}
+      />
     </>
   );
 }

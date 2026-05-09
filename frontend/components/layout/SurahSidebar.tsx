@@ -1,6 +1,5 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import { useState, useMemo } from 'react';
 import { Surah } from '@/lib/api';
 
@@ -9,12 +8,12 @@ interface SurahSidebarProps {
   currentSurahId: number | null;
   onSurahSelect: (id: number) => void;
   onClose?: () => void;
+  isMobileOpen?: boolean;
 }
 
-export default function SurahSidebar({ surahs, currentSurahId, onSurahSelect, onClose }: SurahSidebarProps) {
+export default function SurahSidebar({ surahs, currentSurahId, onSurahSelect, onClose, isMobileOpen = false }: SurahSidebarProps) {
   const [filter, setFilter] = useState('');
-  const searchParams = useSearchParams();
-  const isMobileDrawer = searchParams.get('drawer') === 'surah';
+  const isMobileDrawer = isMobileOpen;
 
   const filteredSurahs = useMemo(() => {
     if (!filter) return surahs;
@@ -34,7 +33,7 @@ export default function SurahSidebar({ surahs, currentSurahId, onSurahSelect, on
           onClick={onClose}
         />
       )}
-      <div className={`fixed left-14 md:left-16 top-0 h-full w-72 bg-[#171717] border-r border-[#212121] flex flex-col z-30 ${
+      <div className={`fixed left-14 md:left-16 top-14 h-[calc(100vh-3.5rem)] w-72 bg-[#171717] border-r border-[#212121] flex flex-col z-[30] ${
         isMobileDrawer ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
       } transition-transform duration-300`}>
         <div className="p-4 border-b border-[#212121]">

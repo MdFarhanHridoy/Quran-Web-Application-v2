@@ -27,8 +27,9 @@ export default function AyahCard({
 
   return (
     <div
+      id={`ayah-${ayahNumber}`}
       className={`bg-[#121212] rounded-lg p-5 border border-[#212121] hover:border-[#1c1c1c] transition-all duration-200 ${
-        isHighlighted ? 'ring-2 ring-[#408039] ring-opacity-50' : ''
+        isHighlighted ? 'border-[#408039]' : ''
       }`}
     >
       <div className="flex items-start justify-between mb-4">

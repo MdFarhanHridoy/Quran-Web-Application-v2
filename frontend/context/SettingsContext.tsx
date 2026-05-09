@@ -6,32 +6,36 @@ import { Settings, defaultSettings } from '@/lib/types';
 interface SettingsContextType {
   settings: Settings;
   updateSettings: (updates: Partial<Settings>) => void;
+  isLoaded: boolean;
 }
 
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [settings, setSettings] = useState<Settings>(() => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('quran-settings');
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        return { ...defaultSettings, ...parsed };
-      }
-    }
-    return defaultSettings;
-  });
+  const [settings, setSettings] = useState<Settings>(defaultSettings);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('quran-settings', JSON.stringify(settings));
-  }, [settings]);
+    const stored = localStorage.getItem('quran-settings');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      setSettings({ ...defaultSettings, ...parsed });
+    }
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      localStorage.setItem('quran-settings', JSON.stringify(settings));
+    }
+  }, [settings, isLoaded]);
 
   const updateSettings = (updates: Partial<Settings>) => {
     setSettings(prev => ({ ...prev, ...updates }));
   };
 
   return (
-    <SettingsContext.Provider value={{ settings, updateSettings }}>
+    <SettingsContext.Provider value={{ settings, updateSettings, isLoaded }}>
       {children}
     </SettingsContext.Provider>
   );
