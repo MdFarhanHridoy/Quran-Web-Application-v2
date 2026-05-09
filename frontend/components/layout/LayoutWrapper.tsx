@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import IconSidebar from './IconSidebar';
 import SurahSidebar from './SurahSidebar';
 import Header from './Header';
+import BottomNavBar from './BottomNavBar';
 import SettingsPanel from '@/components/settings/SettingsPanel';
 import SearchPanel from '@/components/search/SearchPanel';
 import { getSurahs } from '@/lib/api';
@@ -72,7 +73,7 @@ function LayoutWrapperContent({ children }: LayoutWrapperProps) {
           isMobileOpen={isSurahSidebarOpen}
         />
 
-        <main className="flex-1 overflow-y-auto ml-0 lg:ml-[22rem] lg:mr-80 bg-[#121212] pb-[max(0rem,env(safe-area-inset-bottom))]">
+        <main className="flex-1 overflow-y-auto ml-0 lg:ml-[22rem] lg:mr-80 bg-[#121212] pb-[calc(3rem+max(0rem,env(safe-area-inset-bottom)))] lg:pb-[max(0rem,env(safe-area-inset-bottom))]">
           {children}
         </main>
 
@@ -81,6 +82,10 @@ function LayoutWrapperContent({ children }: LayoutWrapperProps) {
           onClose={() => setIsSettingsOpen(false)}
         />
       </div>
+
+      <BottomNavBar
+        onHomeClick={() => router.push('/')}
+      />
 
       <SearchPanel
         isOpen={isSearchOpen}
