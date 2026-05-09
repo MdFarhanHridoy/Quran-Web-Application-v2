@@ -26,7 +26,7 @@ export default function SettingsPanel({ isMobileOpen = false, onClose }: Setting
     <>
       {isMobileOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-[55] md:hidden"
+          className="fixed inset-0 bg-black/50 z-[35] md:hidden"
           onClick={onClose}
         />
       )}
