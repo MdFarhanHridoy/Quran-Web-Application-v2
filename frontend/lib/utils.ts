@@ -37,3 +37,7 @@ export const getAbsoluteAyahNumber = (surahId: number, ayahNumber: number): numb
 export const getAudioUrl = (absoluteAyahNumber: number): string => {
   return `https://cdn.islamic.network/quran/audio/128/ar.alafasy/${absoluteAyahNumber}.mp3`;
 };
+
+export const isArabicText = (text: string): boolean => {
+  return /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/.test(text);
+};

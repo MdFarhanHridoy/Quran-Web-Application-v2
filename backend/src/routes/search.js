@@ -29,8 +29,9 @@ app.get('/', (c) => {
       );
 
       resultsStmt = db.prepare(
-        `SELECT v.*, s.name_en as surah_name
+        `SELECT v.*, t.text as translation, s.name_en as surah_name
          FROM verses v
+         LEFT JOIN translations t ON v.verse_key = t.verse_key AND t.lang_code = 'en'
          JOIN surahs s ON v.surah_id = s.id
          WHERE v.text_uthmani LIKE ?
          ORDER BY v.surah_id, v.ayah_number

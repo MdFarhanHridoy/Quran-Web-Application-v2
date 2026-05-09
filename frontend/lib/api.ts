@@ -68,11 +68,12 @@ export async function getAyahsBySurahId(surahId: number): Promise<Ayah[]> {
 export async function searchAyahs(
   query: string,
   page: number = 1,
-  limit: number = 50
+  limit: number = 50,
+  lang: 'en' | 'ar' = 'en'
 ): Promise<SearchResponse> {
   try {
     const response = await fetch(
-      `${API_URL}/api/search?q=${encodeURIComponent(query)}&page=${page}&limit=${limit}`
+      `${API_URL}/api/search?q=${encodeURIComponent(query)}&page=${page}&limit=${limit}&lang=${lang}`
     );
     if (!response.ok) {
       throw new Error('Failed to search ayahs');

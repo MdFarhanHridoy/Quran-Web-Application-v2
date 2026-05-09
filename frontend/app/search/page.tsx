@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { searchAyahs, SearchResponse, Ayah } from '@/lib/api';
 import { useSettings } from '@/context/SettingsContext';
-import { getArabicFontFamily } from '@/lib/utils';
+import { getArabicFontFamily, isArabicText } from '@/lib/utils';
 
 const RESULTS_PER_PAGE = 50;
 
@@ -20,15 +20,17 @@ function SearchResultsContent() {
   const [data, setData] = useState<SearchResponse | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const isArabic = isArabicText(query);
+
   useEffect(() => {
     if (query) {
       setLoading(true);
-      searchAyahs(query, currentPage, RESULTS_PER_PAGE)
+      searchAyahs(query, currentPage, RESULTS_PER_PAGE, isArabic ? 'ar' : 'en')
         .then(setData)
         .catch((error) => console.error('Search error:', error))
         .finally(() => setLoading(false));
     }
-  }, [query, currentPage]);
+  }, [query, currentPage, isArabic]);
 
   const handlePageChange = (newPage: number) => {
     router.push(`/search?q=${encodeURIComponent(query)}&page=${newPage}`);
@@ -42,6 +44,20 @@ function SearchResultsContent() {
 
     return parts.map((part, index) => {
       if (part.toLowerCase() === keyword.toLowerCase()) {
+        return <mark key={index} className="bg-yellow-500 text-black px-1 rounded">{part}</mark>;
+      }
+      return part;
+    });
+  };
+
+  const highlightArabicKeyword = (text: string, keyword: string) => {
+    if (!keyword) return text;
+    const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escapedKeyword})`, 'gi');
+    const parts = text.split(regex);
+
+    return parts.map((part, index) => {
+      if (part === keyword) {
         return <mark key={index} className="bg-yellow-500 text-black px-1 rounded">{part}</mark>;
       }
       return part;
@@ -74,7 +90,7 @@ function SearchResultsContent() {
       <div className="px-4 py-6 lg:px-6 lg:py-8 max-w-5xl">
         <div className="mb-6">
           <h1 className="text-xl font-semibold text-[#c4c4c4] mb-2">Search Results</h1>
-          <p className="text-sm text-[#7b7d7b]">Search In Translation ( {query} )</p>
+          <p className="text-sm text-[#7b7d7b]">{isArabic ? 'Search In Arabic' : 'Search In Translation'} ( {query} )</p>
         </div>
         <div className="text-center py-12 text-[#636663]">
           No results found for &ldquo;{query}&rdquo;
@@ -89,11 +105,11 @@ function SearchResultsContent() {
     <div className="px-4 py-6 lg:px-6 lg:py-8 max-w-5xl">
       <div className="mb-6">
         <h1 className="text-xl font-semibold text-[#c4c4c4] mb-2">Search Results</h1>
-        <p className="text-sm text-[#7b7d7b]">Search In Translation ( {query} )</p>
+        <p className="text-sm text-[#7b7d7b]">{isArabic ? 'Search In Arabic' : 'Search In Translation'} ( {query} )</p>
       </div>
 
       <div className="mb-4 text-sm text-[#636663]">
-        {data.total} Results found in Translation
+        {data.total} Results found in {isArabic ? 'Arabic' : 'Translation'}
       </div>
 
       <div className="space-y-4 mb-8">
@@ -116,10 +132,10 @@ function SearchResultsContent() {
               dir="rtl"
               style={{ fontFamily: getArabicFontFamily(settings.arabicFont) }}
             >
-              {ayah.text_uthmani}
+              {isArabic ? highlightArabicKeyword(ayah.text_uthmani, query) : ayah.text_uthmani}
             </div>
             <div className="text-[#7b7d7b] leading-relaxed text-sm">
-              {highlightKeyword(ayah.translation, query)}
+              {isArabic ? (ayah.translation || '') : highlightKeyword(ayah.translation, query)}
             </div>
           </Link>
         ))}
