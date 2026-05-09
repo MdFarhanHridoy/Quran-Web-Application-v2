@@ -4,6 +4,7 @@ export interface Surah {
   id: number;
   name_ar: string;
   name_en: string;
+  name_meaning: string;
   revelation_place: string;
   verse_count: number;
 }

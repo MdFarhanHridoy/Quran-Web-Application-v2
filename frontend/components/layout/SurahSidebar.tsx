@@ -21,6 +21,7 @@ export default function SurahSidebar({ surahs, currentSurahId, onSurahSelect, on
     return surahs.filter(
       (surah) =>
         surah.name_en.toLowerCase().includes(lowerFilter) ||
+        surah.name_meaning.toLowerCase().includes(lowerFilter) ||
         surah.id.toString().includes(lowerFilter)
     );
   }, [surahs, filter]);
@@ -66,6 +67,9 @@ export default function SurahSidebar({ surahs, currentSurahId, onSurahSelect, on
                   <div className="flex-1 min-w-0">
                     <div className="text-[#c4c4c4] font-medium text-sm truncate">
                       {surah.name_en}
+                    </div>
+                    <div className="text-xs text-[#636663] truncate">
+                      {surah.name_meaning}
                     </div>
                   </div>
                 </div>

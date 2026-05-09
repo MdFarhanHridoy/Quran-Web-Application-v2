@@ -6,7 +6,7 @@ const app = new Hono();
 app.get('/', (c) => {
   try {
     const db = getDatabase();
-    const surahs = db.prepare('SELECT id, name_ar, name_en, revelation_place, verse_count FROM surahs ORDER BY id').all();
+    const surahs = db.prepare('SELECT id, name_ar, name_en, name_meaning, revelation_place, verse_count FROM surahs ORDER BY id').all();
     return c.json(surahs);
   } catch (err) {
     console.error('Error fetching surahs:', err);
