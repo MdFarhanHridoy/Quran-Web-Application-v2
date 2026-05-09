@@ -4,6 +4,9 @@ import { useState, useEffect, Suspense } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import IconSidebar from './IconSidebar';
 import SurahSidebar from './SurahSidebar';
+import Header from './Header';
+import SettingsPanel from '@/components/settings/SettingsPanel';
+import SearchPanel from '@/components/search/SearchPanel';
 import { getSurahs } from '@/lib/api';
 import { Surah } from '@/lib/api';
 
@@ -14,6 +17,8 @@ interface LayoutWrapperProps {
 function LayoutWrapperContent({ children }: LayoutWrapperProps) {
   const [surahs, setSurahs] = useState<Surah[]>([]);
   const [isSurahSidebarOpen, setIsSurahSidebarOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -36,35 +41,64 @@ function LayoutWrapperContent({ children }: LayoutWrapperProps) {
 
   const handleSurahSelect = (id: number) => {
     router.push(`/surah/${id}`);
+    setIsSurahSidebarOpen(false);
   };
 
   const currentSurahId = getCurrentSurahId();
 
+  const handleSearchClick = () => {
+    setIsSearchOpen(true);
+  };
+
+  const handleSearchSubmit = (query: string) => {
+    setIsSearchOpen(false);
+    router.push(`/search?q=${encodeURIComponent(query)}`);
+  };
+
+  const handleSettingsClick = () => {
+    setIsSettingsOpen(!isSettingsOpen);
+  };
+
   return (
-    <div className="flex h-screen overflow-hidden">
-      <IconSidebar
-        onSurahClick={() => setIsSurahSidebarOpen(!isSurahSidebarOpen)}
-        onSearchClick={() => {}}
-        onSettingsClick={() => {}}
-      />
+    <>
+      <Header onSearchClick={handleSearchClick} />
 
-      <SurahSidebar
-        surahs={surahs}
-        currentSurahId={currentSurahId}
-        onSurahSelect={handleSurahSelect}
-        onClose={() => setIsSurahSidebarOpen(false)}
-      />
+      <div className="flex h-screen pt-14 overflow-hidden">
+        <IconSidebar
+          onSurahClick={() => setIsSurahSidebarOpen(!isSurahSidebarOpen)}
+          onSettingsClick={handleSettingsClick}
+        />
 
-      <main className="flex-1 overflow-y-auto ml-14 md:ml-16 bg-[#121212]">
-        {children}
-      </main>
-    </div>
+        <SurahSidebar
+          surahs={surahs}
+          currentSurahId={currentSurahId}
+          onSurahSelect={handleSurahSelect}
+          onClose={() => setIsSurahSidebarOpen(false)}
+          isMobileOpen={isSurahSidebarOpen}
+        />
+
+        <main className="flex-1 overflow-y-auto ml-14 md:ml-[22rem] bg-[#121212]">
+          {children}
+        </main>
+
+        <SettingsPanel
+          isMobileOpen={isSettingsOpen}
+          onClose={() => setIsSettingsOpen(false)}
+        />
+
+        <SearchPanel
+          isOpen={isSearchOpen}
+          onClose={() => setIsSearchOpen(false)}
+          onSearch={handleSearchSubmit}
+        />
+      </div>
+    </>
   );
 }
 
 export default function LayoutWrapper({ children }: LayoutWrapperProps) {
   return (
-      <Suspense fallback={<div className="flex items-center justify-center h-full"><div className="text-[#c4c4c4]">Loading...</div></div>}>
+    <Suspense fallback={<div className="flex items-center justify-center h-full"><div className="text-[#c4c4c4]">Loading...</div></div>}>
       <LayoutWrapperContent>{children}</LayoutWrapperContent>
     </Suspense>
   );
