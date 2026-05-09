@@ -59,7 +59,7 @@ function LayoutWrapperContent({ children }: LayoutWrapperProps) {
         onSettingsClick={() => setIsSettingsOpen(!isSettingsOpen)}
       />
 
-      <div className="flex h-screen pt-14 overflow-hidden">
+      <div className="flex h-dvh pt-14 overflow-hidden">
         <IconSidebar
           onHomeClick={() => router.push('/')}
         />
@@ -72,7 +72,7 @@ function LayoutWrapperContent({ children }: LayoutWrapperProps) {
           isMobileOpen={isSurahSidebarOpen}
         />
 
-        <main className="flex-1 overflow-y-auto ml-0 md:ml-[22rem] lg:mr-80 bg-[#121212]">
+        <main className="flex-1 overflow-y-auto ml-0 md:ml-[22rem] lg:mr-80 bg-[#121212] pb-[max(0rem,env(safe-area-inset-bottom))]">
           {children}
         </main>
 

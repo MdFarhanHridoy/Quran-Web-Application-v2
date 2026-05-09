@@ -12,7 +12,7 @@ export default function SurahNavigation({ currentSurahId, totalSurahs }: SurahNa
   const nextSurah = currentSurahId < totalSurahs ? currentSurahId + 1 : null;
 
   return (
-    <div className="bg-[#171717] border-t border-[#212121] p-4">
+    <div className="bg-[#171717] border-t border-[#212121] p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
       <div className="flex justify-between items-center mx-auto px-4">
         {prevSurah ? (
           <Link

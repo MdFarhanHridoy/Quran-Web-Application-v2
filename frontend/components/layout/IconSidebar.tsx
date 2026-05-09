@@ -6,7 +6,7 @@ interface IconSidebarProps {
 
 export default function IconSidebar({ onHomeClick }: IconSidebarProps) {
   return (
-    <div className="hidden md:flex fixed left-0 top-14 h-[calc(100vh-3.5rem)] w-14 md:w-16 bg-[#171717] border-r border-[#212121] flex-col items-center py-4 z-[45]">
+    <div className="hidden md:flex fixed left-0 top-14 h-[calc(100dvh-3.5rem)] w-14 md:w-16 bg-[#171717] border-r border-[#212121] flex-col items-center py-4 z-[45]">
       <button
         onClick={onHomeClick}
         className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-lg text-[#7b7d7b] hover:bg-[#1c1c1c] hover:text-[#408039] transition-all duration-200 mb-2"

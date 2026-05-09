@@ -34,7 +34,7 @@ export default function SurahSidebar({ surahs, currentSurahId, onSurahSelect, on
           onClick={onClose}
         />
       )}
-      <div className={`fixed left-0 md:left-16 top-14 h-[calc(100vh-3.5rem)] w-72 md:w-72 bg-[#171717] border-r border-[#212121] flex flex-col z-[40] ${
+      <div className={`fixed left-0 md:left-16 top-14 h-[calc(100dvh-3.5rem)] w-72 md:w-72 bg-[#171717] border-r border-[#212121] flex flex-col z-[40] ${
         isMobileDrawer ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
       } transition-transform duration-300`}>
         <div className="p-4 border-b border-[#212121]">

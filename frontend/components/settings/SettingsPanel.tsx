@@ -32,7 +32,7 @@ export default function SettingsPanel({ isMobileOpen = false, onClose }: Setting
           onClick={onClose}
         />
       )}
-      <div className={`fixed right-0 top-14 h-[calc(100vh-3.5rem)] w-80 bg-[#171717] border-l border-[#212121] z-[40] flex flex-col transform transition-transform duration-300 md:translate-x-0 ${
+      <div className={`fixed right-0 top-14 h-[calc(100dvh-3.5rem)] w-80 bg-[#171717] border-l border-[#212121] z-[40] flex flex-col transform transition-transform duration-300 md:translate-x-0 ${
         isMobileOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'
       }`}>
         <div className="p-4 border-b border-[#212121] flex items-center justify-between">
