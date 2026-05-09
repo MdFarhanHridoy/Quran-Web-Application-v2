@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useSettings } from '@/context/SettingsContext';
 import { getArabicFontFamily } from '@/lib/utils';
 import { Settings } from '@/lib/types';
@@ -11,6 +12,7 @@ interface SettingsPanelProps {
 
 export default function SettingsPanel({ isMobileOpen = false, onClose }: SettingsPanelProps) {
   const { settings, updateSettings, isLoaded } = useSettings();
+  const [isFontSettingsOpen, setIsFontSettingsOpen] = useState(true);
 
   if (!isLoaded) {
     return null;
@@ -34,7 +36,16 @@ export default function SettingsPanel({ isMobileOpen = false, onClose }: Setting
         isMobileOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'
       }`}>
         <div className="p-4 border-b border-[#212121] flex items-center justify-between">
-          <h2 className="text-lg font-bold text-[#c4c4c4]">Font Settings</h2>
+          <button
+            onClick={() => setIsFontSettingsOpen(prev => !prev)}
+            className={`flex items-center gap-2 flex-1 transition-colors duration-300 ${isFontSettingsOpen ? 'text-[#408039]' : 'text-white'}`}
+            aria-label="Toggle font settings"
+          >
+            <h2 className="text-lg font-bold">Font Settings</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 15 14" fill="none" className={`size-4 shrink-0 transition-all duration-300 ease-in-out ${isFontSettingsOpen ? 'rotate-180' : ''}`}>
+              <path d="M11.8181 5.22095L8.01479 9.02428C7.56562 9.47345 6.83063 9.47345 6.38146 9.02428L2.57812 5.22095" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </button>
           <button
             onClick={onClose}
             className="p-2 hover:bg-[#1c1c1c] rounded-lg transition-colors text-[#7b7d7b] hover:text-[#c4c4c4] md:hidden"
@@ -47,76 +58,85 @@ export default function SettingsPanel({ isMobileOpen = false, onClose }: Setting
         </div>
 
         <div className="flex-1 overflow-y-auto p-6 space-y-8">
-          <div>
-          <label className="block text-sm font-semibold text-[#c4c4c4] mb-4">
-            Arabic Font Face
-          </label>
-            <div className="space-y-3">
-              {fonts.map((font) => (
-                <label
-                  key={font.id}
-                  className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all duration-200 ${
-                    settings.arabicFont === font.id
-                      ? 'bg-[#1c1c1c] border-[#408039]'
-                      : 'bg-[#0d0d0d] border-[#212121] hover:border-[#1c1c1c]'
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="arabicFont"
-                    value={font.id}
-                    checked={settings.arabicFont === font.id}
-                    onChange={() => updateSettings({ arabicFont: font.id })}
-                    className="w-4 h-4 accent-[#408039]"
-                  />
-                  <div className="flex-1">
-                    <div className="text-[#c4c4c4] font-medium text-sm">{font.name}</div>
-                    <div
-                      className="text-[#408039] mt-1 text-lg"
-                      dir="rtl"
-                      style={{ fontFamily: getArabicFontFamily(font.id) }}
-                    >
-                      {font.sample}
-                    </div>
-                  </div>
+          <div
+            className="grid transition-[grid-template-rows] duration-300 ease-in-out"
+            style={{ gridTemplateRows: isFontSettingsOpen ? '1fr' : '0fr' }}
+          >
+            <div className="overflow-hidden">
+              <div className="space-y-8">
+                <div>
+                <label className="block text-sm font-semibold text-[#c4c4c4] mb-4">
+                  Arabic Font Face
                 </label>
-              ))}
-            </div>
-          </div>
+                  <div className="space-y-3">
+                    {fonts.map((font) => (
+                      <label
+                        key={font.id}
+                        className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all duration-200 ${
+                          settings.arabicFont === font.id
+                            ? 'bg-[#1c1c1c] border-[#408039]'
+                            : 'bg-[#0d0d0d] border-[#212121] hover:border-[#1c1c1c]'
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="arabicFont"
+                          value={font.id}
+                          checked={settings.arabicFont === font.id}
+                          onChange={() => updateSettings({ arabicFont: font.id })}
+                          className="w-4 h-4 accent-[#408039]"
+                        />
+                        <div className="flex-1">
+                          <div className="text-[#c4c4c4] font-medium text-sm">{font.name}</div>
+                          <div
+                            className="text-[#408039] mt-1 text-lg"
+                            dir="rtl"
+                            style={{ fontFamily: getArabicFontFamily(font.id) }}
+                          >
+                            {font.sample}
+                          </div>
+                        </div>
+                      </label>
+                    ))}
+                  </div>
+                </div>
 
-          <div>
-            <label className="block text-sm font-semibold text-[#c4c4c4] mb-4">
-              Arabic Font Size: {settings.arabicFontSize}px
-            </label>
-            <input
-              type="range"
-              min="20"
-              max="50"
-              value={settings.arabicFontSize}
-              onChange={(e) => updateSettings({ arabicFontSize: parseInt(e.target.value) })}
-              className="w-full h-2 bg-[#0d0d0d] rounded-lg appearance-none cursor-pointer accent-[#408039]"
-            />
-            <div className="flex justify-between text-xs text-[#636663] mt-2">
-              <span>20px</span>
-              <span>50px</span>
-            </div>
-          </div>
+                <div>
+                  <label className="block text-sm font-semibold text-[#c4c4c4] mb-4">
+                    Arabic Font Size: {settings.arabicFontSize}px
+                  </label>
+                  <input
+                    type="range"
+                    min="20"
+                    max="50"
+                    value={settings.arabicFontSize}
+                    onChange={(e) => updateSettings({ arabicFontSize: parseInt(e.target.value) })}
+                    className="w-full h-2 bg-[#0d0d0d] rounded-lg appearance-none cursor-pointer accent-[#408039]"
+                  />
+                  <div className="flex justify-between text-xs text-[#636663] mt-2">
+                    <span>20px</span>
+                    <span>50px</span>
+                  </div>
+                </div>
 
-          <div>
-            <label className="block text-sm font-semibold text-[#c4c4c4] mb-4">
-              Translation Font Size: {settings.translationFontSize}px
-            </label>
-            <input
-              type="range"
-              min="12"
-              max="24"
-              value={settings.translationFontSize}
-              onChange={(e) => updateSettings({ translationFontSize: parseInt(e.target.value) })}
-              className="w-full h-2 bg-[#0d0d0d] rounded-lg appearance-none cursor-pointer accent-[#408039]"
-            />
-            <div className="flex justify-between text-xs text-[#636663] mt-2">
-              <span>12px</span>
-              <span>24px</span>
+                <div>
+                  <label className="block text-sm font-semibold text-[#c4c4c4] mb-4">
+                    Translation Font Size: {settings.translationFontSize}px
+                  </label>
+                  <input
+                    type="range"
+                    min="12"
+                    max="24"
+                    value={settings.translationFontSize}
+                    onChange={(e) => updateSettings({ translationFontSize: parseInt(e.target.value) })}
+                    className="w-full h-2 bg-[#0d0d0d] rounded-lg appearance-none cursor-pointer accent-[#408039]"
+                  />
+                  <div className="flex justify-between text-xs text-[#636663] mt-2">
+                    <span>12px</span>
+                    <span>24px</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
