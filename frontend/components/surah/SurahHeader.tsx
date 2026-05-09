@@ -19,11 +19,11 @@ export default function SurahHeader({
   return (
     <div className="bg-[#121212] rounded-lg p-6 mb-6 border border-[#121212]">
       <div className="relative flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-between md:gap-6">
-        <div className="hidden md:flex flex-shrink-0">
+        <div className="hidden md:flex flex-shrink-0 ml-2">
           <img
             src={isMakkah ? '/asset/makkah.webp' : '/asset/madinah.webp'}
             alt={isMakkah ? 'Makkah' : 'Madinah'}
-            className="w-16 h-16 rounded-lg object-cover"
+            className="w-24 h-24 rounded-lg object-cover"
             style={{ filter: 'brightness(10)' }}
           />
         </div>
