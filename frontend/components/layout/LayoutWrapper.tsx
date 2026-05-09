@@ -72,7 +72,7 @@ function LayoutWrapperContent({ children }: LayoutWrapperProps) {
           isMobileOpen={isSurahSidebarOpen}
         />
 
-        <main className="flex-1 overflow-y-auto ml-0 md:ml-[22rem] lg:mr-80 bg-[#121212] pb-[max(0rem,env(safe-area-inset-bottom))]">
+        <main className="flex-1 overflow-y-auto ml-0 lg:ml-[22rem] lg:mr-80 bg-[#121212] pb-[max(0rem,env(safe-area-inset-bottom))]">
           {children}
         </main>
 

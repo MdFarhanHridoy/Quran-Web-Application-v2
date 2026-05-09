@@ -13,7 +13,7 @@ export default function Header({ onSearchClick, onMenuClick, onSettingsClick }: 
         {onMenuClick && (
           <button
             onClick={onMenuClick}
-            className="p-2 rounded-lg hover:bg-[#1c1c1c] text-[#408039] transition-colors md:hidden"
+            className="p-2 rounded-lg hover:bg-[#1c1c1c] text-[#408039] transition-colors lg:hidden"
             aria-label="Menu"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -21,7 +21,7 @@ export default function Header({ onSearchClick, onMenuClick, onSettingsClick }: 
             </svg>
           </button>
         )}
-        <h1 className="text-lg md:text-xl font-semibold text-[#c4c4c4]">
+        <h1 className="text-lg lg:text-xl font-semibold text-[#c4c4c4]">
           Quran Web Application
         </h1>
       </div>
@@ -29,7 +29,7 @@ export default function Header({ onSearchClick, onMenuClick, onSettingsClick }: 
         {onSettingsClick && (
           <button
             onClick={onSettingsClick}
-            className="p-2 rounded-lg hover:bg-[#1c1c1c] text-[#408039] transition-colors md:hidden"
+            className="p-2 rounded-lg hover:bg-[#1c1c1c] text-[#408039] transition-colors lg:hidden"
             aria-label="Settings"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
