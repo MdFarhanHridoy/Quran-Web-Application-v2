@@ -78,7 +78,7 @@ export default function SurahDetailPage({ params }: { params: Promise<{ id: stri
           surahId={surah.id}
         />
 
-        <div className="space-y-4">
+        <div className="space-y-2">
           {ayahs.map((ayah) => (
             <AyahCard
               key={ayah.verse_key}

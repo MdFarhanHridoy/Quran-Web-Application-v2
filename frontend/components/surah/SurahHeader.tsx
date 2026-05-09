@@ -17,8 +17,8 @@ export default function SurahHeader({
   const showBismillah = surahId !== 1 && surahId !== 9;
 
   return (
-    <div className="bg-[#171717] rounded-lg p-6 mb-6 border border-[#212121]">
-      <div className="flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-between md:gap-6">
+    <div className="bg-[#121212] rounded-lg p-6 mb-6 border border-[#121212]">
+      <div className="relative flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-between md:gap-6">
         <div className="hidden md:flex flex-shrink-0">
           <img
             src={isMakkah ? '/asset/makkah.webp' : '/asset/madinah.webp'}
@@ -28,7 +28,7 @@ export default function SurahHeader({
           />
         </div>
 
-        <div className="text-center md:flex-1">
+        <div className="text-center absolute left-1/2 -translate-x-1/2">
           <h1 className="text-xl md:text-2xl font-semibold text-[#c4c4c4] mb-1">
             Surah {nameEn}
           </h1>

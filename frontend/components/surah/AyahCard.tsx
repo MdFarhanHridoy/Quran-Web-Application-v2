@@ -28,11 +28,11 @@ export default function AyahCard({
   return (
     <div
       id={`ayah-${ayahNumber}`}
-      className={`bg-[#121212] rounded-lg p-5 border border-[#212121] hover:border-[#1c1c1c] transition-all duration-200 ${
+      className={`bg-[#121212] rounded-lg p-4 border border-[#212121] hover:border-[#1c1c1c] transition-all duration-200 ${
         isHighlighted ? 'border-[#408039]' : ''
       }`}
     >
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-2">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#171717] text-[#408039] text-xs font-semibold">
             {ayahNumber}
@@ -43,7 +43,7 @@ export default function AyahCard({
       </div>
 
       <div
-        className="text-right text-[#c4c4c4] mb-4 leading-loose"
+        className="text-right text-[#c4c4c4] mb-3 leading-loose"
         dir="rtl"
         style={{
           fontFamily: getArabicFontFamily(settings.arabicFont),

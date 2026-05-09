@@ -51,7 +51,7 @@ export default function SurahDetailPageClient({ surah, ayahs }: SurahDetailPageC
           surahId={surah.id}
         />
 
-        <div className="space-y-4">
+        <div className="space-y-2">
           {ayahs.map((ayah) => (
             <AyahCard
               key={ayah.verse_key}
