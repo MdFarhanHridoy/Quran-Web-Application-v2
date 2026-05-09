@@ -120,6 +120,7 @@ export default function SettingsPanel({ isMobileOpen = false, onClose }: Setting
             </div>
           </div>
 
+          {/* 
           <div className="bg-[#0d0d0d] p-4 rounded-lg border border-[#212121]">
             <h3 className="font-semibold text-[#c4c4c4] mb-3 text-sm">Preview</h3>
             <div
@@ -139,6 +140,7 @@ export default function SettingsPanel({ isMobileOpen = false, onClose }: Setting
               In the name of Allah, the Most Gracious, the Most Merciful.
             </div>
           </div>
+          */}
         </div>
 
         <div className="p-4 border-t border-[#212121] text-center">

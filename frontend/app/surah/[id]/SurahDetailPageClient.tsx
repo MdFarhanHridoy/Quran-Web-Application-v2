@@ -43,7 +43,7 @@ export default function SurahDetailPageClient({ surah, ayahs }: SurahDetailPageC
 
   return (
     <div className="min-h-full pb-20">
-      <div className="max-w-4xl mx-auto px-4 py-6">
+      <div className="mx-auto px-4 py-6">
         <SurahHeader
           nameEn={surah.name_en}
           ayahCount={surah.verse_count}

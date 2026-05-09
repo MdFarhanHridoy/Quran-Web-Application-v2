@@ -70,7 +70,7 @@ export default function SurahDetailPage({ params }: { params: Promise<{ id: stri
 
   return (
     <div className="min-h-full pb-20">
-      <div className="px-4 py-6 lg:px-6 lg:py-8 max-w-5xl">
+      <div className="px-4 py-6 lg:px-6 lg:py-8">
         <SurahHeader
           nameEn={surah.name_en}
           ayahCount={surah.verse_count}

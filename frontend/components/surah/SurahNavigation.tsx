@@ -13,7 +13,7 @@ export default function SurahNavigation({ currentSurahId, totalSurahs }: SurahNa
 
   return (
     <div className="sticky bottom-0 bg-[#171717] border-t border-[#212121] p-4 z-10">
-      <div className="flex justify-between items-center max-w-4xl mx-auto">
+      <div className="flex justify-between items-center mx-auto px-4">
         {prevSurah ? (
           <Link
             href={`/surah/${prevSurah}`}
