@@ -1,67 +1,97 @@
-# Quran Web Application Frontend
+# Quran Web Application - Frontend
 
-Frontend for Quran Web Application built with Next.js and Tailwind CSS.
+Next.js 16 frontend for the Quran Web Application, built with React 19, TypeScript, and Tailwind CSS 4.
 
 ## Setup
 
-1. Install dependencies:
 ```bash
 npm install
 ```
 
-2. Configure environment variables:
+Configure environment:
 ```bash
-cp .env.local.example .env.local
+echo "NEXT_PUBLIC_API_URL=http://localhost:3001" > .env.local
 ```
 
-Update `NEXT_PUBLIC_API_URL` to point to your backend server.
+## Running
 
-## Running Locally
-
-Development mode:
 ```bash
-npm run dev
+npm run dev     # Development (http://localhost:3000)
+npm run build   # Production build
+npm run start   # Start production server
+npm run lint    # ESLint check
 ```
-
-Production mode:
-```bash
-npm run build
-npm start
-```
-
-The app will start on `http://localhost:3000`
-
-## Features
-
-- View all 114 surahs
-- Read ayahs with Arabic text and English translation
-- Search in translations
-- Customize Arabic font and font sizes
-- Settings persist in localStorage
 
 ## Pages
 
-### Home (`/`)
-List of all 114 surahs with search functionality.
+| Route | File | Description |
+|---|---|---|
+| `/` | `app/page.tsx` | Redirects to `/surah/1` |
+| `/surah/:id` | `app/surah/[id]/page.tsx` | Surah reader with ayah list, header, audio, and navigation |
+| `/search` | `app/search/page.tsx` | Paginated search results with keyword highlighting |
 
-### Surah Detail (`/surah/:id`)
-View all ayahs for a specific surah.
+## Components
 
-### Search (`/search`)
-Search in Quran translations.
+### Layout (`components/layout/`)
+| Component | Description |
+|---|---|
+| `LayoutWrapper` | Main orchestrator — composes header, sidebars, panels, and content area |
+| `Header` | Fixed top navbar (h-14) with search, settings, and menu buttons |
+| `IconSidebar` | Narrow left icon rail (w-16, desktop only) with Home/Quran icon |
+| `SurahSidebar` | Left panel (w-72) with filterable 114-surah list; drawer overlay on mobile |
+
+### Surah (`components/surah/`)
+| Component | Description |
+|---|---|
+| `SurahHeader` | Surah title card — name, ayah count, revelation place image, bismillah |
+| `AyahCard` | Individual ayah — verse number, Arabic text, translation, audio play button |
+| `SurahNavigation` | Bottom prev/next surah links with position indicator |
+
+### Audio (`components/audio/`)
+| Component | Description |
+|---|---|
+| `AudioPlayer` | Per-ayah play/pause button using global AudioContext |
+
+### Settings (`components/settings/`)
+| Component | Description |
+|---|---|
+| `SettingsPanel` | Right-side panel (w-80) — collapsible font settings with slide animation |
+
+### Search (`components/search/`)
+| Component | Description |
+|---|---|
+| `SearchPanel` | Modal overlay with search input, auto-focus, Escape to close |
+
+## Context Providers
+
+| Provider | File | Description |
+|---|---|---|
+| `SettingsProvider` | `context/SettingsContext.tsx` | Font face, font sizes — persisted to localStorage |
+| `AudioProvider` | `context/AudioContext.tsx` | Global audio playback state — single ayah at a time |
 
 ## Settings
 
-The settings panel allows you to:
-- Choose Arabic font (Amiri or Scheherazade)
-- Adjust Arabic font size (16-40px)
-- Adjust translation font size (12-24px)
+| Setting | Options | Range | Default |
+|---|---|---|---|
+| Arabic Font | KFGQPC, Amiri, Scheherazade New | - | KFGQPC |
+| Arabic Font Size | - | 20-50px | 30px |
+| Translation Font Size | - | 12-24px | 17px |
 
-Settings are automatically saved to localStorage.
+Settings are auto-saved to `localStorage` under key `quran-settings`.
+
+## Utilities (`lib/`)
+
+| File | Description |
+|---|---|
+| `api.ts` | API client functions and TypeScript interfaces (`Surah`, `Ayah`) |
+| `types.ts` | `Settings` interface and default values |
+| `utils.ts` | Font family mapping, absolute ayah number calculation, audio URL builder |
 
 ## Tech Stack
 
-- Framework: Next.js 14+ (App Router)
-- Language: TypeScript
-- Styling: Tailwind CSS
-- Fonts: Google Fonts (Amiri, Scheherazade)
+| Package | Version |
+|---|---|
+| Next.js | 16.2.4 |
+| React | 19.2.4 |
+| TypeScript | 5 |
+| Tailwind CSS | 4 |
