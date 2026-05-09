@@ -28,7 +28,7 @@ export default function SurahHeader({
           />
         </div>
 
-        <div className="text-center absolute left-1/2 -translate-x-1/2">
+        <div className="text-center md:absolute md:left-1/2 md:-translate-x-1/2">
           <h1 className="text-xl md:text-2xl font-semibold text-[#c4c4c4] mb-1">
             Surah {nameEn}
           </h1>
