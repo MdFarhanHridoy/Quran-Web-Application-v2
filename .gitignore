@@ -16,9 +16,6 @@ node_modules/
 /frontend/out/
 /backend/dist/
 
-# Database dataset (external git repo)
-database/quran-dataset-main/
-
 # Logs
 *.log
 npm-debug.log*
