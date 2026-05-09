@@ -13,7 +13,7 @@ export default function Header({ onSearchClick, onMenuClick, onSettingsClick }: 
         {onMenuClick && (
           <button
             onClick={onMenuClick}
-            className="p-2 rounded-lg hover:bg-[#1c1c1c] text-[#7b7d7b] hover:text-[#408039] transition-colors md:hidden"
+            className="p-2 rounded-lg hover:bg-[#1c1c1c] text-[#408039] transition-colors md:hidden"
             aria-label="Menu"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -29,7 +29,7 @@ export default function Header({ onSearchClick, onMenuClick, onSettingsClick }: 
         {onSettingsClick && (
           <button
             onClick={onSettingsClick}
-            className="p-2 rounded-lg hover:bg-[#1c1c1c] text-[#7b7d7b] hover:text-[#408039] transition-colors md:hidden"
+            className="p-2 rounded-lg hover:bg-[#1c1c1c] text-[#408039] transition-colors md:hidden"
             aria-label="Settings"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,7 +40,7 @@ export default function Header({ onSearchClick, onMenuClick, onSettingsClick }: 
         )}
         <button
           onClick={onSearchClick}
-          className="p-2 rounded-lg hover:bg-[#1c1c1c] text-[#7b7d7b] hover:text-[#408039] transition-colors"
+          className="p-2 rounded-lg hover:bg-[#1c1c1c] text-[#408039] transition-colors"
           aria-label="Search"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
