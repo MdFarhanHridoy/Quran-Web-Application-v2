@@ -74,7 +74,7 @@ export default function SearchPanel({ isOpen, onClose, onSearch }: SearchPanelPr
             <input
               ref={inputRef}
               type="text"
-              placeholder="Search by Arabic or English..."
+              placeholder="Find wisdom in the Quran"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="flex-1 bg-[#0d0d0d] border border-[#212121] rounded-lg px-3 py-2 text-[#c4c4c4] placeholder-[#636663] focus:outline-none focus:ring-2 focus:ring-[#408039]"
